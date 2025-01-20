@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
                         "Ekada Kaay Jhala",
                         "https://samusicplayer.blob.core.windows.net/cmusicplayer/Bhimrupi.mp3",
                         "https://samusicplayer.blob.core.windows.net/cmusicplayer/EkadaKaayJhala.png")
-                    SongScreen(song)
+                    SongPlayerView(song)
                 }
             }
         }
@@ -40,6 +40,6 @@ fun DefaultPreview() {
             "Ekada Kaay Jhala",
             "https://samusicplayer.blob.core.windows.net/cmusicplayer/Bhimrupi.mp3",
             "https://samusicplayer.blob.core.windows.net/cmusicplayer/EkadaKaayJhala.png")
-        SongScreen(song)
+        SongPlayerView(song)
     }
 }

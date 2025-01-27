@@ -7,6 +7,7 @@ compose = "1.5.4"
 compose-material3 = "1.1.2"
 androidx-activityCompose = "1.8.0"
 materialIconsExtended = "1.7.6"
+core = "1.9.0"
 
 [libraries]
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
@@ -20,6 +21,7 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
+androidx-core = { group = "androidx.core", name = "core", version.ref = "core" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

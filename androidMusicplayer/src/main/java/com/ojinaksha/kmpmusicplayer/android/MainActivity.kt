@@ -1,5 +1,7 @@
 package com.ojinaksha.kmpmusicplayer.android
 
+import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,12 +11,17 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.WindowCompat
 import com.ojinaksha.kmpmusicplayer.Song
 
 class MainActivity : ComponentActivity() {
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Lock to portrait mode
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        //WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             MyApplicationTheme {
                 Surface(

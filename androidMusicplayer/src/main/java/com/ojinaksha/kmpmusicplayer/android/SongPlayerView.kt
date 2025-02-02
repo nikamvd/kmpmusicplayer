@@ -7,22 +7,21 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.*
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Repeat
+import androidx.compose.material.icons.filled.Shuffle
+import androidx.compose.material.icons.filled.SkipNext
+import androidx.compose.material.icons.filled.SkipPrevious
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Slider
@@ -52,15 +51,20 @@ import com.ojinaksha.kmpmusicplayer.Song
 import com.ojinaksha.kmpmusicplayer.SongPlayer
 import com.ojinaksha.kmpmusicplayer.SongPlayerViewModel
 
+
 @Composable
 fun SongPlayerView(song: Song) {
     val songPlayer = SongPlayer(song)
     val songPlayerViewModel = SongPlayerViewModel(songPlayer)
 
     var speed by remember { mutableDoubleStateOf(50.0) }
+
+    val topColor = Color(1.0f, 0.294f, 0.667f)
+    val bottomColor = Color(0.302f, 0.212f, 0.725f)
+    val purpleColor = Color(0.8f, 0.341f, 0.843f)
     val gradientColors = listOf(
-        Color(0xFFFF4BAA),
-        Color(0xFF4D36B9)
+        topColor,
+        bottomColor
     )
     val gradientBrush = Brush.linearGradient(
         colors = gradientColors,
@@ -72,7 +76,7 @@ fun SongPlayerView(song: Song) {
         modifier = Modifier
             .fillMaxSize()
             .background(brush = gradientBrush)
-            .padding(10.dp),
+            .safeDrawingPadding()
     ) {
         // Back Button
         IconButton(onClick = {}) {
@@ -136,7 +140,7 @@ fun SongPlayerView(song: Song) {
                     valueRange = 0f..100f,
                     colors = SliderDefaults.colors(
                         thumbColor = Color.White,
-                        activeTrackColor = Color.Magenta
+                        activeTrackColor = purpleColor
                     ),
                     modifier = Modifier.weight(1f)
                 )
@@ -186,7 +190,7 @@ fun SongPlayerView(song: Song) {
                     .offset(y = (25).dp)
                     .size(100.dp)
                     .clip(CircleShape)
-                    .background(Color.Magenta)
+                    .background(purpleColor)
                     .clickable(onClick = { songPlayerViewModel.playSong() }),
                 contentAlignment = Alignment.Center
             ) {
